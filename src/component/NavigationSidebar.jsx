@@ -23,12 +23,12 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-[320px] bg-white z-50 shadow-xl transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-screen bg-white z-50 shadow-xl transition-transform duration-300 ease-in-out p-1 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Header */}
-        <div className="flex items-center gap-5 px-8 h-20 border-b border-gray-200">
+        <div className="flex items-center gap-5 px-5 h-20 border-b border-gray-200">
           <div
             onClick={onClose}
             className="text-3xl text-gray-500 hover:text-black transition"
@@ -40,49 +40,32 @@ const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         {/* Menu */}
-        <div className="px-8 py-7">
+        <div className=" py-7 flex flex-col gap-4">
           <MenuItem icon={<FiHome />} text="Home" to="/" onclose={onClose} />
-
           <MenuItem
             icon={<FiBookmark />}
             text="Library"
             to="/library"
             onclose={onClose}
           />
-
           <MenuItem
             icon={<FiUser />}
             text="Profile"
             to="/profile"
             onclose={onClose}
           />
-
           <MenuItem
             icon={<FiEdit />}
             text="Stories"
             to="/stories"
             onclose={onClose}
           />
-
           <MenuItem
             icon={<FiBarChart2 />}
             text="Stats"
             to="/stats"
             onclose={onClose}
           />
-
-          <hr className="my-7" />
-
-          <MenuItem icon={<FiUsers />} text="Following" />
-
-          <MenuItem
-            icon={<FiPlus />}
-            text="Find writers and publications to follow"
-          />
-
-          <button className="mt-5 text-gray-600 underline hover:text-black">
-            See suggestions
-          </button>
         </div>
       </aside>
     </>
@@ -95,15 +78,15 @@ const MenuItem = ({ icon, text, to, onclose }) => {
       to={to}
       onClick={onclose}
       className={({ isActive }) =>
-        `flex items-center gap-5 w-full py-4 text-left cursor-pointer transition ${
+        `flex items-center gap-4 w-full px-4 text-left cursor-pointer transition ${
           isActive
-            ? "text-[#242424] font-bold"
+            ? "text-[#242424] font-bold border-l-2 border-black "
             : "text-gray-500 hover:text-black"
         }`
       }
     >
-      <span className="text-[28px]">{icon}</span>
-      <span className="text-[20px]">{text}</span>
+      <span className="text-[16px]">{icon}</span>
+      <span className="text-[16px]">{text}</span>
     </NavLink>
   );
 };
