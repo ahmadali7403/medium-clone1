@@ -6,7 +6,7 @@ import NavigationSidebar from "../component/NavigationSidebar";
 
 const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  console.log(isSidebarOpen);
+
   return (
     <>
       <Navbar setIsSidebarOpen={setIsSidebarOpen} />

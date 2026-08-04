@@ -28,10 +28,7 @@ const BlogCard = ({ blog }) => {
     };
   }, []);
   return (
-    <article
-      onClick={() => navigate(`/blog/${blog.id}`)}
-      className="w-full border-b border-gray-200 py-7 px-7"
-    >
+    <article className="w-full border-b border-gray-200 py-7 px-7">
       {/* Author */}
       <div className="flex items-center gap-2 text-[13px] cursor-pointer">
         <img
@@ -50,7 +47,10 @@ const BlogCard = ({ blog }) => {
       </div>
 
       {/* Content */}
-      <div className="flex justify-between items-start gap-6 mt-3 cursor-pointer">
+      <div
+        className="flex justify-between items-start gap-6 mt-3 cursor-pointer"
+        onClick={() => navigate(`/blog/${blog.id}`)}
+      >
         <div className="flex-1">
           <h2 className="text-[22px] font-extrabold leading-[31px] text-[#242424]">
             {blog.title}

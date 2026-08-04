@@ -7,7 +7,7 @@ import {
   FiUsers,
   FiPlus,
 } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import HamburgerMenu from "./HamburgerMenu";
 const Sidebar = ({ isOpen, onClose }) => {
@@ -29,12 +29,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       >
         {/* Header */}
         <div className="flex items-center gap-5 px-8 h-20 border-b border-gray-200">
-          <button
+          <div
             onClick={onClose}
             className="text-3xl text-gray-500 hover:text-black transition"
           >
             <HamburgerMenu />
-          </button>
+          </div>
 
           <Logo />
         </div>
@@ -89,18 +89,22 @@ const Sidebar = ({ isOpen, onClose }) => {
   );
 };
 
-const MenuItem = ({ icon, text, active, to, onclose }) => {
+const MenuItem = ({ icon, text, to, onclose }) => {
   return (
-    <Link
-      onClick={onclose}
+    <NavLink
       to={to}
-      className={`flex items-center gap-5 w-full py-4 text-left cursor-pointer transition ${
-        active ? "text-black font-medium" : "text-gray-500 hover:text-black"
-      }`}
+      onClick={onclose}
+      className={({ isActive }) =>
+        `flex items-center gap-5 w-full py-4 text-left cursor-pointer transition ${
+          isActive
+            ? "text-[#242424] font-bold"
+            : "text-gray-500 hover:text-black"
+        }`
+      }
     >
       <span className="text-[28px]">{icon}</span>
       <span className="text-[20px]">{text}</span>
-    </Link>
+    </NavLink>
   );
 };
 
