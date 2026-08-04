@@ -45,12 +45,6 @@ const Library = () => {
           active={activeTab === "history"}
           onClick={() => setActiveTab("history")}
         />
-
-        <TabButton
-          text="Responses"
-          active={activeTab === "responses"}
-          onClick={() => setActiveTab("responses")}
-        />
       </div>
 
       {/* Content */}
