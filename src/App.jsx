@@ -7,6 +7,7 @@ import Library from "./pages/Library";
 import Profile from "./pages/Profile";
 import Stories from "./pages/Stories";
 import Stats from "./pages/Stats";
+import ImportStory from "./component/ImportStory";
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,6 +18,8 @@ const App = () => {
         </Route>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/import-story" element={<ImportStory />} />
+
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/library" element={<Library />} />
           <Route path="/profile" element={<Profile />} />

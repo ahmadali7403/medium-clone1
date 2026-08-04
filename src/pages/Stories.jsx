@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 const Stories = () => {
   const [activeTab, setActiveTab] = useState("drafts");
-
+  const navigate = useNavigate();
   const tabs = [
     { id: "drafts", label: "Drafts" },
     { id: "scheduled", label: "Scheduled" },
     { id: "published", label: "Published" },
     { id: "unlisted", label: "Unlisted" },
-    { id: "submissions", label: "Submissions" },
   ];
 
   return (
@@ -18,7 +17,10 @@ const Stories = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-semibold text-[#242424]">Stories</h1>
 
-        <button className="border border-black rounded-full px-3 py-1.5 hover:bg-gray-100 transition cursor-pointer text-xs">
+        <button
+          className="border border-black rounded-full px-3 py-1.5 hover:bg-gray-100 transition cursor-pointer text-xs"
+          onClick={() => navigate("/import-story")}
+        >
           Import a story
         </button>
       </div>
@@ -60,10 +62,6 @@ const Stories = () => {
 
         {activeTab === "unlisted" && (
           <p className="text-base text-[#6B6B6B]">No unlisted stories.</p>
-        )}
-
-        {activeTab === "submissions" && (
-          <p className="text-base text-[#6B6B6B]">No submission stories yet.</p>
         )}
       </div>
     </div>
