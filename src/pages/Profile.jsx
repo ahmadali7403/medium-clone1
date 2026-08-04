@@ -36,7 +36,7 @@ const Profile = () => {
 
       {/* Tabs */}
       <div className="mt-[26px] border-b border-gray-200">
-        <div className="flex gap-4">
+        <div className="flex gap-7">
           {["home", "reposts", "activity", "about"].map((tab) => (
             <button
               key={tab}
