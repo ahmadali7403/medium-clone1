@@ -21,7 +21,7 @@ const Library = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-10 mt-8 border-b border-gray-200">
+      <div className="flex items-center gap-10 mt-8 border-b border-gray-200 min-w-full">
         <TabButton
           text="Your lists"
           active={activeTab === "yourLists"}
