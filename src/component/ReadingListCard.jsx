@@ -1,7 +1,12 @@
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { MdDeleteOutline } from "react-icons/md";
 import { FiLock } from "react-icons/fi";
 
-const ReadingListCard = ({ title = "Reading List" }) => {
+const ReadingListCard = ({
+  id,
+  title = "Reading list",
+  onDelete,
+  isDefault = false,
+}) => {
   return (
     <div className="mt-8 bg-[#F5F5F5] rounded-md flex overflow-hidden">
       {/* Left */}
@@ -23,7 +28,12 @@ const ReadingListCard = ({ title = "Reading List" }) => {
 
               <FiLock />
             </div>
-            <HiOutlineDotsHorizontal className="text-[18px] text-[#6B6B6B] hover:text-black cursor-pointer" />
+            {!isDefault && (
+              <MdDeleteOutline
+                onClick={() => onDelete(id)}
+                className="text-[26px] text-[#6B6B6B] hover:text-red-600 transition cursor-pointer"
+              />
+            )}
           </div>
         </div>
       </div>

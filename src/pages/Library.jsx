@@ -2,10 +2,18 @@ import { useState } from "react";
 import CreateListBanner from "../component/CreateListBanner";
 import ReadingListCard from "../component/ReadingListCard";
 import ListModal from "../component/ListModal";
+import { getLists, saveLists } from "../utils/localStorage";
 const Library = () => {
   const [activeTab, setActiveTab] = useState("yourLists");
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState(getLists());
   const [showModal, setShowModal] = useState(false);
+  const handleDelete = (id) => {
+    const updatedLists = lists.filter((list) => list.id !== id);
+
+    setLists(updatedLists);
+
+    saveLists(updatedLists);
+  };
   return (
     <div className="max-w-5xl mx-auto px-6 py-6">
       {/* Header */}
@@ -55,12 +63,18 @@ const Library = () => {
             <CreateListBanner onOpen={() => setShowModal(true)} />
             <>
               {/* Default Card */}
-              <ReadingListCard title="Reading list" />
+              <ReadingListCard title="Reading list" isDefault={true} />
 
               {/* User Created Lists */}
 
               {lists.map((list) => (
-                <ReadingListCard key={list.id} title={list.title} />
+                <ReadingListCard
+                  key={list.id}
+                  id={list.id}
+                  title={list.title}
+                  onDelete={handleDelete}
+                  isDefault={false}
+                />
               ))}
             </>{" "}
           </>

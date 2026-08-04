@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-
+import { saveLists } from "../utils/localStorage";
 const CreateListModal = ({ onClose, lists, setLists }) => {
   const [title, setTitle] = useState("");
   const [isPrivate, setIsPrivate] = useState(false);
@@ -74,13 +74,16 @@ const CreateListModal = ({ onClose, lists, setLists }) => {
             <button
               disabled={!title.trim()}
               onClick={() => {
-                setLists([
-                  ...lists,
-                  {
-                    id: Date.now(),
-                    title,
-                  },
-                ]);
+                const newList = {
+                  id: Date.now(),
+                  title,
+                };
+
+                const updatedLists = [...lists, newList];
+
+                setLists(updatedLists);
+
+                saveLists(updatedLists);
 
                 onClose();
               }}
